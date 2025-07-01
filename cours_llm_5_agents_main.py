@@ -20,6 +20,7 @@ def query_ollama_for_tool_choice(prompt: str):
         response = requests.post(OLLAMA_API_URL, json=payload)
         response.raise_for_status()
         return json.loads(response.json()["message"]["content"])
+    
     except Exception as e:
         print(f"Erreur lors de l'appel à Ollama : {e}")
         return None
@@ -74,6 +75,7 @@ def run_agent_workflow(user_question: str):
             response.raise_for_status()
             tool_result = response.json()
             print(f"[Agent] Résultat de l'outil reçu du MCP : {tool_result}")
+            
         except requests.exceptions.RequestException as e:
             print(f"[Agent] Erreur lors de l'appel au MCP Server : {e}")
             tool_result = {"error": str(e)}

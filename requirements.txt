@@ -11,6 +11,10 @@ fastapi
 
 numpy 
 matplotlib
+scikit-learn
 
 chromadb
 PyPDF2
+
+langchain_community
+psycopg2-binary

@@ -26,6 +26,7 @@ def get_embedding(text: str, model: str = "mxbai-embed-large") -> List[float]:
         response.raise_for_status()
         result = response.json()
         return result["embedding"]
+    
     except Exception as e:
         print(f"❌ Erreur lors de la génération d'embedding: {e}")
         return []

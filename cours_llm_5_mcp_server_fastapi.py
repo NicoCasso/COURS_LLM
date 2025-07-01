@@ -151,6 +151,7 @@ async def brave_search(query: str):
                 )
 
         return {"tool": "search", "query": query, "results": results}
+    
     except requests.exceptions.RequestException as e:
         raise HTTPException(
             status_code=500,
