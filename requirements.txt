@@ -1,2 +1,16 @@
 requests
+feedparser
 langchain
+langchain-ollama
+
+requests
+uvicorn
+wikipedia-api
+python-dotenv
+fastapi
+
+numpy 
+matplotlib
+
+chromadb
+PyPDF2

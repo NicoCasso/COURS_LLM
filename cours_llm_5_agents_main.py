@@ -5,7 +5,7 @@ import requests
 # -- CONFIGURATION --
 OLLAMA_API_URL = "http://localhost:11434/api/chat"
 MCP_SERVER_URL = "http://127.0.0.1:5001"  # L'adresse de notre serveur d'outils
-MODEL_NAME = "llama3.2:latest"
+MODEL_NAME = "llama3.2:3b"
 
 
 def query_ollama_for_tool_choice(prompt: str):

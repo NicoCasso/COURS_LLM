@@ -29,6 +29,7 @@ def veille_ia() -> str:
         result += "PROJETS POPULAIRES:\n" + "\n".join(repos)
         
         return result
+    
     except Exception as e:
         return f"Erreur veille: {e}"
 
@@ -36,8 +37,20 @@ def veille_ia() -> str:
 def calculer(expression: str) -> str:
     """Effectue des calculs mathématiques."""
     print("Tool calculer")
+
+    import math
+
+    # Définissez les variables ou fonctions locales si nécessaire
+    locals = {
+        'math': math,
+        # Ajoutez d'autres fonctions ou variables ici si nécessaire
+    }
+
     try:
-        return f"{expression} = {eval(expression)}"
+        # Utilisez eval avec le dictionnaire des variables locales
+        result = eval(expression, {"__builtins__": None}, locals)
+        return f"{expression} = {result}"
+    
     except Exception:
         return "Expression invalide"
 
@@ -51,7 +64,7 @@ def info_date() -> str:
 # === SETUP ULTRA-RAPIDE ===
 
 # LLM
-llm = ChatOllama(model="llama3.2:latest")
+llm = ChatOllama(model="llama3.2:3b")
 
 # Outils
 tools = [veille_ia, calculer, info_date]
@@ -59,6 +72,7 @@ tools = [veille_ia, calculer, info_date]
 # Prompt du hub (ou prompt simple)
 try:
     prompt = hub.pull("hwchase17/openai-tools-agent")
+
 except Exception:
     # Fallback si pas de connexion au hub
     from langchain_core.prompts import ChatPromptTemplate
